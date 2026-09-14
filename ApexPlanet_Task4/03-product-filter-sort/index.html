@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Product Listing</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><h1>Product Store</h1><p>Filter and sort products</p></header>
+<main>
+<div class="controls">
+<select id="category"><option value="all">All Categories</option><option value="Flowers">Flowers</option><option value="Gifts">Gifts</option><option value="Plants">Plants</option></select>
+<input id="maxPrice" type="number" placeholder="Max price">
+<select id="sort"><option value="default">Sort By</option><option value="priceLow">Price: Low to High</option><option value="priceHigh">Price: High to Low</option><option value="rating">Rating: High to Low</option></select>
+</div>
+<p id="result"></p><div id="products" class="grid"></div>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
