@@ -8,6 +8,24 @@ const products = [
     { name: 'Lily Bouquet', category: 'Flowers', price: 599, rating: 4.9, icon: '💐' },
     { name: 'Cute Plant Pot', category: 'Plants', price: 199, rating: 4.1, icon: '🌿' }
 ];
-const category = document.getElementById('category'), maxPrice = document.getElementById('maxPrice'), sort = document.getElementById('sort'), container = document.getElementById('products'), result = document.getElementById('result');
-function render() { let data = products.filter(p => (category.value === 'all' || p.category === category.value) && (!maxPrice.value || p.price <= Number(maxPrice.value))); if (sort.value === 'priceLow') data.sort((a, b) => a.price - b.price); if (sort.value === 'priceHigh') data.sort((a, b) => b.price - a.price); if (sort.value === 'rating') data.sort((a, b) => b.rating - a.rating); container.innerHTML = data.map(p => `<article class="product"><div class="emoji">${p.icon}</div><h3>${p.name}</h3><p>${p.category}</p><p class="price">₹${p.price}</p><p class="rating">★ ${p.rating}</p></article>`).join(''); result.textContent = `Showing ${data.length} product(s)`; if (!data.length) container.innerHTML = '<p>No products found.</p>' }
+const category = document.getElementById('category'),
+    maxPrice = document.getElementById('maxPrice'),
+    sort = document.getElementById('sort'),
+    container = document.getElementById('products'),
+    result = document.getElementById('result');
+function render() {
+    let data = products.filter(p => (category.value === 'all' || p.category === category.value) && (!maxPrice.value || p.price <= Number(maxPrice.value)));
+    if (sort.value === 'priceLow') data.sort((a, b) => a.price - b.price);
+    if (sort.value === 'priceHigh') data.sort((a, b) => b.price - a.price);
+    if (sort.value === 'rating') data.sort((a, b) => b.rating - a.rating);
+    container.innerHTML = data.map(p => `<article class="product">
+            <div class="emoji">
+            ${p.icon}</div><h3>
+            ${p.name}</h3>
+            <p>${p.category}</p>
+            <p class="price">₹${p.price}</p>
+            <p class="rating">★ ${p.rating}</p></article>`).join('');
+    result.textContent = `Showing ${data.length} product(s)`;
+    if (!data.length) container.innerHTML = '<p>No products found.</p>'
+}
 [category, maxPrice, sort].forEach(el => el.addEventListener('input', render)); render();
